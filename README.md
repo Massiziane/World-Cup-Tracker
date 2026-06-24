@@ -1,36 +1,139 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# World Cup Tracker 2026
+
+
+A modern and free FIFA World Cup 2026 tracker built with **Next.js**, **Prisma**, **Neon PostgreSQL**, and the **Football Data API**.
+<p align="center">
+<img src="./app/icon.png" alt="World Cup Tracker Logo" width="120" />
+</p>
+The app displays matches, live games, teams, group standings, and the knockout bracket using synced data stored in a PostgreSQL database.
+
+
+
+## Live Demo
+
+[View the app](https://world-cup-tracker-hazel.vercel.app/)
+
+## Features
+
+- ⚽ World Cup match schedule
+- 🔴 Live matches page
+- 📊 Group standings
+- 🏆 Knockout bracket
+- 🌐 Team pages
+- 🔁 Automatic data sync with GitHub Actions
+- 🗄️ Neon PostgreSQL database
+- ⚡ Deployed on Vercel
+- 🎨 Responsive dark sports-themed UI
+
+## Tech Stack
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS
+- Prisma 7
+- Neon PostgreSQL
+- Football Data API
+- GitHub Actions
+- Vercel
+
+## Project Structure
+
+```txt
+app/
+├── api/
+│   └── sync/world-cup
+├── matches/
+├── groups/
+├── bracket/
+├── teams/
+├── live/
+├── icon.png
+└── page.tsx
+
+src/
+├── lib/
+│   ├── prisma.ts
+│   └── football-data.ts
+├── services/
+│   ├── matches.ts
+│   ├── teams.ts
+│   ├── standings.ts
+│   ├── bracket.ts
+│   └── live.ts
+```
+
+## Data Sync
+
+The app does not call the football API directly from the frontend.
+
+Instead, data flows like this:
+
+```txt
+Football Data API
+        ↓
+Sync API Route
+        ↓
+Neon PostgreSQL
+        ↓
+Prisma Services
+        ↓
+Next.js UI
+```
+
+A GitHub Actions workflow triggers the sync endpoint automatically.
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies:
+
+```bash
+npm install
+```
+
+Generate Prisma client:
+
+```bash
+npx prisma generate
+```
+
+Run the dev server:
 
 ```bash
 npm run dev
-# or
-yarn dev 
-# or
-pnpm dev
-# or
-bun dev  
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```txt
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Environment Variables
 
-## Learn More
+Create a `.env` file:
 
-To learn more about Next.js, take a look at the following resources:
+```env
+DATABASE_URL=
+FOOTBALL_DATA_API_TOKEN=
+SYNC_SECRET=
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Status
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This project was created as a portfolio/practice project to explore:
 
-## Deploy on Vercel
+- API integration
+- Database syncing
+- Prisma ORM
+- Scheduled jobs
+- Sports dashboard UI
+- Vercel deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Preview
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+![World Cup Tracker](./public/images/gitHero.png)
+
+## Author
+
+Built by [Massi](https://github.com/Massiziane)
