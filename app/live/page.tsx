@@ -4,6 +4,8 @@ import HomeNavbar from "../components/home/HomeNavbar";
 import LiveHero from "../components/live/LiveHero";
 import LiveMatchesSection from "../components/live/LiveMatchesSection";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 export default async function LivePage() {
   const liveMatches = await getLiveMatches();
 

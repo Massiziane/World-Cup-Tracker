@@ -5,7 +5,8 @@ import MatchSection from "../components/matches/MatchSection";
 import MatchesStats from "../components/matches/MatchesStats";
 
 import { CalendarDays } from "lucide-react";
-
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 export default async function MatchesPage() {
   const matches = await getMatches();
 

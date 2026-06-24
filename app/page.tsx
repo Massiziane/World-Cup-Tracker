@@ -11,6 +11,9 @@ import {
   getUpcomingMatches,
 } from "@/src/services/matches";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export default async function HomePage() {
   const upcomingMatches = await getUpcomingMatches(5);
   const finishedMatches = await getFinishedMatches(4);
