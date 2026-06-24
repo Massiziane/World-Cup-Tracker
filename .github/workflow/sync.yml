@@ -1,4 +1,4 @@
-name: Sync World Cup
+name: Sync World Cup Data
 
 on:
   schedule:
@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Trigger sync
+      - name: Trigger World Cup sync
         run: |
           curl -X POST \
             -H "x-sync-secret: ${{ secrets.SYNC_SECRET }}" \
-            https://your-app.vercel.app/api/sync/world-cup
+            https://YOUR-VERCEL-URL.vercel.app/api/sync/world-cup
