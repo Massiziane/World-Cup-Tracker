@@ -9,27 +9,31 @@ export default function HomeNavbar() {
         <span>WORLD CUP TRACKER</span>
       </Link>
 
-      <div className="hidden gap-6 text-sm font-semibold text-slate-300 md:flex">
+        <div className="hidden gap-6 text-sm font-semibold text-slate-300 md:flex">
         <Link href="/matches" className="hover:text-emerald-400">
-          Matches
+            Matches
         </Link>
 
         <Link href="/groups" className="hover:text-emerald-400">
-          Groups
+            Groups
         </Link>
 
         <Link href="/bracket" className="hover:text-emerald-400">
-          Bracket
+            Bracket
         </Link>
 
         <Link href="/teams" className="hover:text-emerald-400">
-          Teams
+            Teams
         </Link>
-      </div>
 
-      <div className="rounded-full bg-emerald-400/15 px-4 py-2 text-sm font-bold text-emerald-300">
-        LIVE DATA
-      </div>
+        <Link
+            href="/live"
+            className="flex items-center gap-2 text-red-400 hover:text-red-300"
+        >
+            <span className="h-2 w-2 animate-pulse rounded-full bg-red-500" />
+            Live
+        </Link>
+        </div>
     </nav>
   );
 }
