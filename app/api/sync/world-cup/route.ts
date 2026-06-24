@@ -39,9 +39,7 @@ type MatchesResponse = {
 };
 
 async function upsertTeam(team?: ApiTeam | null) {
-  if (!team?.id) {
-    return null;
-  }
+  if (!team?.id) return null;
 
   return prisma.team.upsert({
     where: {
@@ -63,14 +61,8 @@ async function upsertTeam(team?: ApiTeam | null) {
   });
 }
 
-export async function POST(request: Request) {
+async function syncWorldCupData() {
   try {
-    const secret = request.headers.get("x-sync-secret");
-
-    if (secret !== process.env.SYNC_SECRET) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
-
     const data = await footballFetch<MatchesResponse>("/competitions/WC/matches");
 
     let syncedMatches = 0;
@@ -141,4 +133,24 @@ export async function POST(request: Request) {
       { status: 500 }
     );
   }
+}
+
+export async function POST(request: Request) {
+  const secret = request.headers.get("x-sync-secret");
+
+  if (secret !== process.env.SYNC_SECRET) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  return syncWorldCupData();
+}
+
+export async function GET(request: Request) {
+  const authHeader = request.headers.get("authorization");
+
+  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  return syncWorldCupData();
 }

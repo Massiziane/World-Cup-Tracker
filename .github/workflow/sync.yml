@@ -1,0 +1,17 @@
+name: Sync World Cup
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger sync
+        run: |
+          curl -X POST \
+            -H "x-sync-secret: ${{ secrets.SYNC_SECRET }}" \
+            https://your-app.vercel.app/api/sync/world-cup
