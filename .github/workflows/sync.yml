@@ -9,9 +9,9 @@ jobs:
   sync:
     runs-on: ubuntu-latest
 
-  steps:
-    - name: Trigger World Cup sync
-      run: |
-        curl --fail-with-body -i -X POST \
-          -H "x-sync-secret: ${{ secrets.SYNC_SECRET }}" \
-          https://world-cup-tracker-hazel.vercel.app/api/sync/world-cup
+    steps:
+      - name: Trigger World Cup sync
+        run: |
+          curl --fail-with-body -i -X POST \
+            -H "x-sync-secret: ${{ secrets.SYNC_SECRET }}" \
+            https://world-cup-tracker-hazel.vercel.app/api/sync/world-cup
