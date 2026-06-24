@@ -8,6 +8,9 @@ const nextConfig: NextConfig = {
         hostname: "crests.football-data.org",
       },
     ],
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy:
+      "default-src 'self'; script-src 'none'; sandbox;",
   },
 };
 
