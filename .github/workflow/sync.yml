@@ -12,6 +12,6 @@ jobs:
     steps:
       - name: Trigger World Cup sync
         run: |
-          curl -X POST \
+          curl -i -X POST \
             -H "x-sync-secret: ${{ secrets.SYNC_SECRET }}" \
-            https://YOUR-VERCEL-URL.vercel.app/api/sync/world-cup
+            https://world-cup-tracker-hazel.vercel.app/api/sync/world-cup
