@@ -23,7 +23,6 @@ export default function HomeHero() {
       <div className="absolute inset-x-0 bottom-0 z-[1] h-56 bg-gradient-to-t from-[#020617] to-transparent" />
 
       <div className="relative z-10 mx-auto flex max-w-7xl flex-col gap-14 px-6 py-10">
-        <HomeNavbar />
 
         <div className="max-w-3xl pt-12">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-4 py-2 text-sm font-bold text-emerald-300">

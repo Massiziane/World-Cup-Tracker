@@ -1,6 +1,7 @@
 import HomeHero from "./components/home/HomeHero";
 import HomeFeatures from "./components/home/HomeFeatures";
 import HomeBracketPreview from "./components/home/HomeBracketPreview";
+import HomeNavbar from "./components/home/HomeNavbar";
 import MatchPanel from "./components/home/MatchPanel";
 import MatchCard from "./components/home/MatchCard";
 import ResultCard from "./components/home/ResultCard";
@@ -16,7 +17,12 @@ export default async function HomePage() {
 
   return (
     <main className="min-h-screen bg-[#020617] text-white">
+      <div className="sticky top-4 z-50 mx-auto max-w-7xl px-6">
+        <HomeNavbar />
+      </div>
+
       <HomeHero />
+
       <section className="mx-auto grid max-w-7xl gap-6 px-6 py-8 lg:grid-cols-2">
         <MatchPanel title="Upcoming Matches" href="/matches">
           {upcomingMatches.map((match) => (
@@ -33,7 +39,6 @@ export default async function HomePage() {
 
       <HomeBracketPreview />
 
-      
       <HomeFeatures />
     </main>
   );
