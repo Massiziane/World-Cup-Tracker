@@ -139,7 +139,14 @@ export async function POST(request: Request) {
   const secret = request.headers.get("x-sync-secret");
 
   if (secret !== process.env.SYNC_SECRET) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json(
+      {
+        error: "Unauthorized",
+        receivedSecret: Boolean(secret),
+        hasEnvSecret: Boolean(process.env.SYNC_SECRET),
+      },
+      { status: 401 }
+    );
   }
 
   return syncWorldCupData();
