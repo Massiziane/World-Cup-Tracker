@@ -1,5 +1,5 @@
 import BracketTeamRow from "./BracketTeamRow";
-import { formatDate } from "@/src/lib/format-date";
+import MatchTime from "../MatchTime";
 
 export default function BracketMatch({
   match,
@@ -12,7 +12,7 @@ export default function BracketMatch({
   return (
     <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 shadow-xl transition hover:border-emerald-400/40">
       <p className="mb-3 text-xs font-bold uppercase text-slate-500">
-        {formatDate(match.utcDate)}
+        <MatchTime date={match.utcDate} />
       </p>
 
       <BracketTeamRow

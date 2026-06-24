@@ -1,4 +1,5 @@
-import { formatDate } from "@/src/lib/format-date";
+import MatchTime from "../MatchTime";
+
 
 export default function TeamMatchCard({
   match,
@@ -13,7 +14,7 @@ export default function TeamMatchCard({
     <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
       <div className="mb-3 flex items-center justify-between gap-3">
         <p className="text-xs font-bold uppercase text-slate-500">
-          {formatDate(match.utcDate)}
+          <MatchTime date={match.utcDate} />
         </p>
 
         <span className="rounded-full bg-emerald-400/10 px-3 py-1 text-xs font-black text-emerald-300">
