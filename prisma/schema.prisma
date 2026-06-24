@@ -11,3 +11,46 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model Team {
+  id        String   @id @default(cuid())
+  apiId     Int      @unique
+  name      String
+  shortName String?
+  tla       String?
+  crest     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  homeMatches Match[] @relation("HomeTeam")
+  awayMatches Match[] @relation("AwayTeam")
+}
+
+model Match {
+  id    String @id @default(cuid())
+  apiId Int    @unique
+
+  utcDate  DateTime
+  status   String
+  matchday Int?
+  stage    String?
+  group    String?
+
+  homeTeamId String?
+  awayTeamId String?
+
+  winner   String?
+  duration String?
+
+  homeScore Int?
+  awayScore Int?
+  homeHalf  Int?
+  awayHalf  Int?
+
+  lastUpdated DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  homeTeam Team? @relation("HomeTeam", fields: [homeTeamId], references: [id])
+  awayTeam Team? @relation("AwayTeam", fields: [awayTeamId], references: [id])
+}
