@@ -9,11 +9,21 @@ jobs:
   sync:
     runs-on: ubuntu-latest
 
+    env:
+      SYNC_SECRET: ${{ secrets.SYNC_SECRET }}
+
     steps:
+      - name: Check secret exists
+        run: |
+          if [ -z "$SYNC_SECRET" ]; then
+            echo "SYNC_SECRET is empty"
+            exit 1
+          else
+            echo "SYNC_SECRET exists"
+          fi
+
       - name: Trigger World Cup sync
-        env:
-          SYNC_SECRET: ${{ secrets.SYNC_SECRET }}
         run: |
           curl --fail-with-body -i -X POST \
-            -H "x-sync-secret: ${SYNC_SECRET}" \
+            -H "x-sync-secret: $SYNC_SECRET" \
             https://world-cup-tracker-hazel.vercel.app/api/sync/world-cup
