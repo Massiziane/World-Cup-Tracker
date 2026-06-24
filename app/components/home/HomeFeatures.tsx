@@ -9,7 +9,7 @@ import FeatureCard from "./FeatureCard";
 
 export default function HomeFeatures() {
   return (
-    <section className="relative z-20 mx-auto -mt-24 grid max-w-7xl gap-4 px-6 pb-8 md:grid-cols-4">
+    <section className="relative z-20 mx-auto -mt-12 grid max-w-7xl gap-4 px-6 pb-8 md:grid-cols-4">
       <FeatureCard
         title="Matches"
         text="Upcoming fixtures and final scores."

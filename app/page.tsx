@@ -17,9 +17,6 @@ export default async function HomePage() {
   return (
     <main className="min-h-screen bg-[#020617] text-white">
       <HomeHero />
-
-      <HomeFeatures />
-
       <section className="mx-auto grid max-w-7xl gap-6 px-6 py-8 lg:grid-cols-2">
         <MatchPanel title="Upcoming Matches" href="/matches">
           {upcomingMatches.map((match) => (
@@ -35,6 +32,9 @@ export default async function HomePage() {
       </section>
 
       <HomeBracketPreview />
+
+      
+      <HomeFeatures />
     </main>
   );
 }
