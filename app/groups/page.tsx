@@ -9,7 +9,7 @@ export default async function GroupsPage() {
 
   return (
     <main className="min-h-screen bg-[#020617] text-white">
-      <div className="mx-auto max-w-7xl px-6 pt-6">
+      <div className="sticky top-4 z-50 mx-auto max-w-7xl px-6">
         <HomeNavbar />
       </div>
 
