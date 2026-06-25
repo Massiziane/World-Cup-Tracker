@@ -13,7 +13,7 @@ export default async function TeamsPage() {
         <HomeNavbar />
       </div>
 
-      <TeamsHero />
+      <TeamsHero teams={teams} />
 
       <TeamsGrid teams={teams} />
     </main>

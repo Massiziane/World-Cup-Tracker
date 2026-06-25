@@ -13,6 +13,13 @@ The app displays matches, live games, teams, group standings, and the knockout b
 
 [View the app](https://world-cup-tracker-hazel.vercel.app/)
 
+## Latest Update
+
+- Added search modals for Matches, Groups, and Teams.
+- Introduced bracket round filtering for easier navigation.
+- Improved match cards with localized date/time display.
+- Automated data synchronization every 5 minutes using GitHub Actions and Vercel.
+
 ## Features
 
 - ⚽ World Cup match schedule
@@ -24,6 +31,8 @@ The app displays matches, live games, teams, group standings, and the knockout b
 - 🗄️ Neon PostgreSQL database
 - ⚡ Deployed on Vercel
 - 🎨 Responsive dark sports-themed UI
+- 🔍 Search modals for Matches, Groups, and Teams for quick navigation.
+- 🏆 Interactive knockout bracket with round filtering (All Rounds, Round of 16, Quarter-finals, Semi-finals, Final, etc.).
 
 ## Tech Stack
 
