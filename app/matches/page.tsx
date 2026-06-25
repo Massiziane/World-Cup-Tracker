@@ -40,8 +40,7 @@ export default async function MatchesPage() {
               </h1>
 
               <p className="mt-4 max-w-2xl text-slate-300">
-                Follow every World Cup fixture, upcoming game,
-                and final result from the database.
+                Follow every World Cup fixture, upcoming match, and final result in one place.
               </p>
             </div>
 

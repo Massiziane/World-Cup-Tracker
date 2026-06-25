@@ -16,8 +16,7 @@ export default function GroupsHero() {
         </h1>
 
         <p className="mt-4 max-w-2xl text-slate-300">
-          Live group tables calculated from finished matches stored in your
-          database.
+          Live group tables calculated from completed World Cup matches.
         </p>
       </div>
     </section>
