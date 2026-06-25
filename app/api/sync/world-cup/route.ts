@@ -42,9 +42,7 @@ async function upsertTeam(team?: ApiTeam | null) {
   if (!team?.id) return null;
 
   return prisma.team.upsert({
-    where: {
-      apiId: team.id,
-    },
+    where: { apiId: team.id },
     update: {
       name: team.name ?? "TBD",
       shortName: team.shortName,
@@ -76,9 +74,7 @@ async function syncWorldCupData() {
       if (awayTeam) syncedTeams++;
 
       await prisma.match.upsert({
-        where: {
-          apiId: match.id,
-        },
+        where: { apiId: match.id },
         update: {
           utcDate: new Date(match.utcDate),
           status: match.status,
@@ -117,6 +113,17 @@ async function syncWorldCupData() {
       syncedMatches++;
     }
 
+    await prisma.appSettings.upsert({
+      where: { id: 1 },
+      update: {
+        lastSyncedAt: new Date(),
+      },
+      create: {
+        id: 1,
+        lastSyncedAt: new Date(),
+      },
+    });
+
     return NextResponse.json({
       message: "World Cup sync completed",
       syncedMatches,
@@ -139,14 +146,7 @@ export async function POST(request: Request) {
   const secret = request.headers.get("x-sync-secret");
 
   if (secret !== process.env.SYNC_SECRET) {
-    return NextResponse.json(
-      {
-        error: "Unauthorized",
-        receivedSecret: Boolean(secret),
-        hasEnvSecret: Boolean(process.env.SYNC_SECRET),
-      },
-      { status: 401 }
-    );
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   return syncWorldCupData();
