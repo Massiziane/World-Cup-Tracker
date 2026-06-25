@@ -16,7 +16,7 @@ export default function TeamsHero() {
         </h1>
 
         <p className="mt-4 max-w-2xl text-slate-300">
-          Explore every team synced from the World Cup database.
+          Browse every qualified nation and follow their progress throughout the tournament.
         </p>
       </div>
     </section>
