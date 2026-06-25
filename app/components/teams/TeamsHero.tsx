@@ -1,23 +1,35 @@
 import { Users } from "lucide-react";
+import TeamsSearchModal from "./TeamsSearchModal";
 
-export default function TeamsHero() {
+export default function TeamsHero({
+  teams,
+}: {
+  teams: any[];
+}) {
   return (
     <section className="relative overflow-hidden border-b border-white/10 px-6 py-10">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(34,197,94,0.25),transparent_35%)]" />
 
       <div className="relative mx-auto max-w-7xl">
-        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-4 py-2 text-sm font-bold text-emerald-300">
-          <Users size={16} />
-          Qualified Nations
+        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div>
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-4 py-2 text-sm font-bold text-emerald-300">
+              <Users size={16} />
+              Qualified Nations
+            </div>
+
+            <h1 className="text-4xl font-black uppercase md:text-6xl">
+              World Cup Teams
+            </h1>
+
+            <p className="mt-4 max-w-2xl text-slate-300">
+              Browse every qualified nation and follow their progress throughout
+              the tournament.
+            </p>
+          </div>
+
+          <TeamsSearchModal teams={teams} />
         </div>
-
-        <h1 className="text-4xl font-black uppercase md:text-6xl">
-          World Cup Teams
-        </h1>
-
-        <p className="mt-4 max-w-2xl text-slate-300">
-          Browse every qualified nation and follow their progress throughout the tournament.
-        </p>
       </div>
     </section>
   );
