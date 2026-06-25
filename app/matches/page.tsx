@@ -3,10 +3,13 @@ import { getMatches } from "@/src/services/matches";
 import HomeNavbar from "../components/home/HomeNavbar";
 import MatchSection from "../components/matches/MatchSection";
 import MatchesStats from "../components/matches/MatchesStats";
+import MatchesSearchModal from "../components/matches/MatchesSearchModal";
 
 import { CalendarDays } from "lucide-react";
+
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
+
 export default async function MatchesPage() {
   const matches = await getMatches();
 
@@ -14,9 +17,7 @@ export default async function MatchesPage() {
     ["TIMED", "SCHEDULED"].includes(match.status)
   );
 
-  const finished = matches.filter(
-    (match) => match.status === "FINISHED"
-  );
+  const finished = matches.filter((match) => match.status === "FINISHED");
 
   return (
     <main className="min-h-screen bg-[#020617] text-white">
@@ -40,30 +41,28 @@ export default async function MatchesPage() {
               </h1>
 
               <p className="mt-4 max-w-2xl text-slate-300">
-                Follow every World Cup fixture, upcoming match, and final result in one place.
+                Follow every World Cup fixture, upcoming match, and final result
+                in one place.
               </p>
             </div>
 
-            <MatchesStats
-              total={matches.length}
-              upcoming={upcoming.length}
-              finished={finished.length}
-            />
+            <div className="flex flex-col gap-4 md:items-end">
+              <MatchesStats
+                total={matches.length}
+                upcoming={upcoming.length}
+                finished={finished.length}
+              />
+
+              <MatchesSearchModal matches={matches} />
+            </div>
           </div>
         </div>
       </section>
 
       <section className="mx-auto grid max-w-7xl gap-8 px-6 py-10 lg:grid-cols-2">
-        <MatchSection
-          title="Upcoming Matches"
-          matches={upcoming}
-        />
+        <MatchSection title="Upcoming Matches" matches={upcoming} />
 
-        <MatchSection
-          title="Finished Matches"
-          matches={finished}
-          isResult
-        />
+        <MatchSection title="Finished Matches" matches={finished} isResult />
       </section>
     </main>
   );
