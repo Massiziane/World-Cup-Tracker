@@ -13,7 +13,7 @@ export default async function GroupsPage() {
         <HomeNavbar />
       </div>
 
-      <GroupsHero />
+      <GroupsHero groups={groups} />
 
       <GroupsGrid groups={groups} />
     </main>
