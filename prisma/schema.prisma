@@ -12,6 +12,13 @@ datasource db {
   provider = "postgresql"
 }
 
+model AppSettings {
+  id           Int       @id @default(1)
+  lastSyncedAt DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
 model Team {
   id        String   @id @default(cuid())
   apiId     Int      @unique
